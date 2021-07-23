@@ -49,22 +49,50 @@
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sorted = inventors.sort((a,b) => a.year - b.year)
+    console.table(sorted)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year)
+    }, 0) // '0' passed as starting value
+    console.log(totalYears)
 
     // 5. Sort the inventors by years lived
+    const sortedLives = inventors.sort((a,b) => {
+      return (a.passed - a.year) + (b.passed - b.year)
+    })
+    console.table(sortedLives)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    // const classname = document.querySelector('.mw-category');
+    // // convert links from this class to an array:
+    // const links = Array.from(classname.querySelectorAll('a'))
+    // const de = links.map(link => link.textContent).filter(streetName => streetName.includes('de'));
+    // // in "https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris": 
+    // // console.log(de)
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const nameSort = people.sort()
+    console.log(nameSort)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const tally = data.reduce((total, item) => {
+      // check if item has already been added to object ('total')
+      if(!total[item]) {
+        total[item] = 0;
+      } 
+      total[item]++;
+      return total;
+      // if already in object, increment the tally
+    }, {}) // starting value is empty object 
+    console.log(tally)
 
   </script>
 </body>
